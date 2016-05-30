@@ -11,7 +11,7 @@ public class Node {
 		return o;
 	}
 
-	public String printList() { //can't set this to a final variable
+	public String printList() { //can't set this to a final variable,
 		Node current = this;
 		String str = "";
 		while (current != null) {
@@ -20,4 +20,6 @@ public class Node {
 		}
 		return str += "null";
 	}
+
+	
 }
