@@ -1,6 +1,6 @@
 public class Node {
-	private Object o;
-	private Node next;
+	Object o;
+	Node next;
 
 	public Node(Object obj) {
 		this.o = obj;
@@ -11,15 +11,8 @@ public class Node {
 		return o;
 	}
 
-	public String printList() { //can't set this to a final variable,
-		Node current = this;
-		String str = "";
-		while (current != null) {
-			str += String.valueOf(current.o) + "->";
-			current = current.next;
-		}
-		return str += "null";
+	public Node getNext() {
+		return next;
 	}
 
-	
 }
