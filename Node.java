@@ -1,18 +1,9 @@
 public class Node {
-	Object o;
+	Object data;
 	Node next;
 
 	public Node(Object obj) {
-		this.o = obj;
+		this.data = obj;
 		this.next = null;
 	}
-
-	public Object getData() {
-		return o;
-	}
-
-	public Node getNext() {
-		return next;
-	}
-
 }
