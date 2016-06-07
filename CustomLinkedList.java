@@ -128,4 +128,29 @@ public class CustomLinkedList {
 		str.append("null");
 		return str.toString();
 	}
+
+	public void reverseList() {
+		Node current = head;
+		Node prev = null;
+		Node next;
+		while (current != null) {
+			next = current.next;
+			current.next = prev;
+			prev = current;
+			current = next;
+		}
+		head = prev;
+		System.out.println("Linked list successfully reversed.");
+	}
+
+	public static void main(String[] args) {
+		CustomLinkedList list = new CustomLinkedList();
+		list.append(new Node(2));
+		list.append(new Node(4));
+		list.append(new Node(6));
+		list.append(new Node(8));
+		System.out.println(list.toString());
+		list.reverseList();
+		System.out.println(list.toString());
+	}
 }

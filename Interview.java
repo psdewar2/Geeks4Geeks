@@ -1,8 +1,71 @@
+
+import java.util.Stack;
+
 public class Interview {
 	public static void main(String[] args) {
-		int[] array = {15,18,2,3,5,6,9};
-		System.out.println(findInCircularArray(array, 8));
+		int[][] array = {{2,4,6,8},{5,9,12,16},{2,11,5,9},{3,2,1,8}};
+		System.out.println(balancedParentheses("{(([[]))}"));
+	}
 
+	static boolean balancedParentheses(String str) {
+		Stack<Character> stack = new Stack<Character>();
+		for (int i = 0; i < str.length(); i++) {
+			if (str.charAt(i) == '(' || str.charAt(i) == '[' || str.charAt(i) == '{') {
+				stack.push(str.charAt(i));
+			} else if (str.charAt(i) == ')' && stack.peek() != '(' || 
+				str.charAt(i) == ']' && stack.peek() != '['|| 
+				str.charAt(i) == '}' && stack.peek() != '{') {
+				return false;
+			} else {
+				stack.pop();
+			}
+		}
+		return stack.isEmpty();
+	}
+
+	static void stackReverse(String str) {
+		Stack<Character> stack = new Stack<Character>();
+		for (int i = 0; i < str.length(); i++) {
+			stack.push(str.charAt(i));
+		}
+
+		for (int i = 0; i < str.length(); i++) {
+			System.out.print(stack.pop());
+		}
+		System.out.println();
+	}
+
+	static void printSpiralOrder(int[][] array) {
+		int top = 0, left = 0;
+		int right = array[0].length - 1, bottom = array.length - 1;
+		int d = 0; //d is for direction: 0 right, 1 down, 2 left, 3 up
+		while (top <= bottom && left <= right) {
+			if (d == 0) {
+				for (int i = left; i <= right; i++) {
+					System.out.print(array[top][i] + " ");
+				}
+				top++;
+			} else if (d == 1) {
+				for (int i = top; i <= bottom; i++) {
+					System.out.print(array[i][right] + " ");
+				}
+				right--;
+			} else if (d == 2) {
+				for (int i = right; i >= left; i--) {
+					System.out.print(array[bottom][i] + " ");
+				}
+				bottom--;
+			} else if (d == 3) {
+				for (int i = bottom; i >= top; i--) {
+					System.out.print(array[i][left] + " ");
+				}
+				left++;
+			}
+			// d++;
+			// if (d == 4) d = 0; OR
+			d = (d + 1) % 4;
+		}
+		System.out.println();
 	}
 
 	static int findInCircularArray(int[] array, int value) {
@@ -12,14 +75,14 @@ public class Interview {
 			int mid = (low + high) / 2;
 			if (value == array[mid]) { 
 				return mid;
-			} else if (array[mid] <= array[high]) { //if true this half is sorted
-				if (value > array[mid] && value <= array[high]) { //right half is sorted
+			} else if (array[mid] <= array[high]) { //if true right half is sorted
+				if (value > array[mid] && value <= array[high]) { //
 					low = mid + 1; //search sorted right half
 				} else {
 					high = mid - 1; //search left half
 				}
-			} else if (array[mid] >= array[low]) {
-				if (value < array[mid] && value >= array[low]) { //left half is sorted
+			} else if (array[mid] >= array[low]) { //if true left half is sorted
+				if (value < array[mid] && value >= array[low]) {
 					high = mid - 1; //search sorted left half
 				} else {
 					low = mid + 1; //search right half
