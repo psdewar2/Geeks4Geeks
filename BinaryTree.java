@@ -1,5 +1,5 @@
 public class BinaryTree {
-	Node root;
+	static Node root;
 
 	public BinaryTree() {
 
@@ -90,14 +90,21 @@ public class BinaryTree {
 
 	public static void main(String[] args) {
 		BinaryTree bt = new BinaryTree();
-		bt.addNode(50);
-		bt.addNode(25);
-		bt.addNode(15);
-		bt.addNode(30);
-		bt.addNode(75);
-		bt.addNode(85);
-		bt.findNode(15);
-		bt.findNode(26);
+		bt.addNode(8);
+		bt.addNode(3);
+		bt.addNode(10);
+		bt.addNode(1);
+		bt.addNode(6);
+		bt.addNode(14);
+		bt.addNode(4);
+		bt.addNode(7);
+		bt.addNode(13);
+		bt.preOrder(root);
+		System.out.println();
+		bt.inOrder(root);
+		System.out.println();
+		bt.postOrder(root);
+		System.out.println();
 
 		//			50
 		//		25		75
